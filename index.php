@@ -12,8 +12,10 @@
     <title>PHP dan MYSQL - Menampilkan data dari DATABASE MYSQL dengan PHP </title>
 </head>
 <body>
+    <div class="container">
+        
     <h1>Data kafe </h1>
-    <table class="table table-bordere">
+        <table class="table table-bordere">
         <thead>
             <th>id meja</th>
             <th>nomor meja</th>
@@ -39,5 +41,6 @@
         }
         ?>
     </table>
+    </div>
 </body>
 </html>
