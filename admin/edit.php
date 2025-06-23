@@ -10,6 +10,7 @@
     <h2>Form edit meja</h2>
 
     <?php
+    session_start();
         @include "koneksi.php";
 
         $id_meja = $_GET['id_meja'];

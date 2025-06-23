@@ -1,4 +1,5 @@
 <?php 
+session_start();
 @include "koneksi.php";
 
 // Cek role user
@@ -6,7 +7,18 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'karyawan') {
     header("Location: ../login.php");
     exit;
 }
+$agregasi_query = "SELECT 
+                    COUNT(*) AS total_reservasi,
+                    MIN(jumlah_orang) AS min_orang,
+                    MAX(jumlah_orang) AS max_orang,
+                    SUM(jumlah_orang) AS total_orang,
+                    AVG(jumlah_orang) AS rata_orang
+                   FROM reservasi 
+                   WHERE tanggal = CURDATE()";
+$agregasi_result = mysqli_query($conn, $agregasi_query);
+$agregasi = mysqli_fetch_assoc($agregasi_result);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

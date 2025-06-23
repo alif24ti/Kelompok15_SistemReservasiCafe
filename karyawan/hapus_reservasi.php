@@ -8,9 +8,9 @@ $id_reservasi = $_GET['id'];
 $delete = "DELETE FROM reservasi WHERE id_reservasi = '$id_reservasi'";
 
 if (mysqli_query($conn, $delete)) {
-    header("Location: reservasi.php?status=success&message=Reservasi berhasil dihapus");
+    header("Location: dashboard.php?status=success&message=Reservasi berhasil dihapus");
 } else {
-    header("Location: reservasi.php?status=error&message=Gagal menghapus reservasi");
+    header("Location: dashboard.php?status=error&message=Gagal menghapus reservasi");
 }
 
 exit();

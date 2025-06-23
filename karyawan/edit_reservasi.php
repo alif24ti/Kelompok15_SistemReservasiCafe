@@ -1,5 +1,6 @@
 <?php
-include "koneksi.php";
+session_start();
+@include "koneksi.php";
 
 // Ambil data reservasi yang akan diedit
 $id_reservasi = $_GET['id'];

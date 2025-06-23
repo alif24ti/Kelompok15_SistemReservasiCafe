@@ -22,8 +22,8 @@ $query = "INSERT INTO reservasi (nama, tanggal, waktu, jumlah_orang, id_meja)
           VALUES ('$nama', '$tanggal', '$waktu', '$jumlah_orang', '$id_meja')";
 
 if (mysqli_query($conn, $query)) {
-    header("location:reservasi.php?status=success&message=Reservasi berhasil dibuat");
+    header("location:dashboard.php?status=success&message=Reservasi berhasil dibuat");
 } else {
-    header("location:reservasi.php?status=error&message=Gagal membuat reservasi");
+    header("location:dashboard.php?status=error&message=Gagal membuat reservasi");
 }
 ?>

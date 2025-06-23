@@ -1,23 +1,17 @@
 <?php include "koneksi.php";
-
-if (isset($_SESSION['user'])) {
-    header("Location: dashboard.php");
-    exit;
-}
-
+session_start(); // Tambahkan baris ini di paling atas
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = $_POST['password'];
-
+    //
     $query = "SELECT * FROM users WHERE username = '$username'";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
         
-        if (password_verify($password, $user['password'])) {
+        if ($password === $user['password']) {
             $_SESSION['user'] = $user;
-            
             if ($user['role'] == 'admin') {
                 header("Location: admin/dashboard.php");
             } else {
@@ -26,11 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit;
         }
     }
-    
     $error = "Username atau password salah!";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
